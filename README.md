@@ -1,64 +1,92 @@
-# AzScope
+# AzScope.py
 
-AzScope es una herramienta de **enumeración y detección de subdominios** con un enfoque especial en identificar activos alojados en **Microsoft Azure**.
-
-Diseñada para **pentesters**, **bug bounty hunters** y analistas de seguridad, permite descubrir subdominios válidos, resolver sus IPs y verificar si están dentro de los rangos IPv4 públicos de Azure.  
-Su interfaz en terminal es **colorida, moderna y fácil de leer**, pensada para hacer más agradable y clara la revisión de resultados.
+AzScope es una herramienta en Python para **enumerar subdominios alojados en Azure** y **verificar si direcciones IP pertenecen a Azure**, utilizando rangos oficiales de Microsoft.
 
 ---
 
 ## 🚀 Características
 
-- Enumeración de subdominios usando listas personalizadas.
-- Resolución y filtrado de IPs contra prefijos IPv4 oficiales de Azure.
-- Exportación opcional de resultados a formato `.tsv` para análisis posterior.
-- Compatible con entornos Linux.
+- **Enumeración de subdominios** en dominios objetivo usando wordlists.
+- **Verificación de direcciones IP** contra rangos públicos de Azure.
+- Opción para guardar resultados en formato **TSV**.
+- Basado en rangos oficiales de Microsoft (ServiceTags).
 
 ---
 
 ## 📦 Requisitos
 
-Antes de ejecutar AzScope, asegúrate de tener instaladas las siguientes herramientas y librerías:
+Instalar `dnsx` (de ProjectDiscovery) y la librería `rich`:
 
 ```bash
-sudo apt install grepcidr && go install github.com/projectdiscovery/dnsx/cmd/dnsx@latest && pip install rich
+go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest && pip install rich
 ```
 
-**Notas:**
-- `dnsx` se instala con `go install` (requiere tener Go instalado).
-- Si no tienes Go, instálalo siguiendo la [documentación oficial](https://go.dev/doc/install).
+> **Nota**: `dnsx` requiere tener instalado Go. En Debian/Ubuntu:
+```bash
+sudo apt install golang -y
+```
 
 ---
 
-## 🔧 Instalación
+## ⚙️ Instalación
 
-Clona el repositorio y da permisos de ejecución al script:
-
+1. Clonar este repositorio:
 ```bash
-git clone https://https://github.com/R41DN/AzScope.git
+git clone https://github.com/<TU_USUARIO>/AzScope.git
 cd AzScope
-chmod +x AzScopee.py
+```
+
+2. Dar permisos de ejecución:
+```bash
+chmod +x AzScope.py
 ```
 
 ---
 
-## 📌 Uso
+## 📖 Uso
 
-Ejecución básica:
+AzScope tiene **dos modos de ejecución**:
 
+### 1️⃣ Enumerar subdominios en Azure
 ```bash
-./AzScope.py <dominio> <wordlist> [output.tsv]
+./AzScope.py -d <DOMINIO> -w <WORDLIST> [-o salida.tsv]
+```
+**Ejemplo:**
+```bash
+./AzScope.py -d microsoft.com -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -o resultados.tsv
 ```
 
-- `<dominio>` → Dominio objetivo (ej: `example.com`)
-- `<wordlist>` → Lista de subdominios (ej: `/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt`)
-- `[output.tsv]` → (Opcional) Archivo donde se guardarán los resultados filtrados.
+📌 **Salida esperada:**
+- Lista de subdominios en Azure.
+- Estadísticas finales.
+- Exportación opcional en TSV.
 
-Ejemplo:
+## 📷 Ejemplos de salida
 
-```bash
-./AzScope.py microsoft.com /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt resultados.tsv
-```
+### 🔍 Enumeración de subdominios
+![Enumeración de subdominios](Ejemplo1.png)
 
 ---
+
+### 2️⃣ Verificar IPs contra Azure
+```bash
+./AzScope.py -l <ARCHIVO_IPS> [-o salida.tsv]
+```
+**Ejemplo:**
+```bash
+./AzScope.py -l lista_ips.txt -o azure_ips.tsv
+```
+
+📌 **Salida esperada:**
+- Lista de IPs que pertenecen a Azure.
+- Porcentaje de coincidencias.
+- Exportación opcional en TSV.
+
+---
+### 🌐 Verificación de IPs en Azure
+<!-- Aquí colocarás la imagen de ejemplo -->
+![IPs en Azure](Ejemplo2.png)
+
+---
+
 
