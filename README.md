@@ -1,4 +1,4 @@
-# AzScope.py
+# AzScope
 
 AzScope es una herramienta en Python para **enumerar subdominios alojados en Azure** y **verificar si direcciones IP pertenecen a Azure**, utilizando rangos oficiales de Microsoft.
 
