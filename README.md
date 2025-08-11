@@ -15,6 +15,51 @@ Su interfaz en terminal es **colorida, moderna y fácil de leer**, pensada para 
 - Exportación opcional de resultados a formato `.tsv` para análisis posterior.
 - Compatible con entornos Linux.
 
-## Requisitos
-<pre> ```bash sudo apt install grepcidr && go install github.com/projectdiscovery/dnsx/cmd/dnsx@latest && pip install rich ``` </pre>
+---
+
+## 📦 Requisitos
+
+Antes de ejecutar AzScope, asegúrate de tener instaladas las siguientes herramientas y librerías:
+
+```bash
+sudo apt install grepcidr && go install github.com/projectdiscovery/dnsx/cmd/dnsx@latest && pip install rich
+```
+
+**Notas:**
+- `dnsx` se instala con `go install` (requiere tener Go instalado).
+- Si no tienes Go, instálalo siguiendo la [documentación oficial](https://go.dev/doc/install).
+
+---
+
+## 🔧 Instalación
+
+Clona el repositorio y da permisos de ejecución al script:
+
+```bash
+git clone https://https://github.com/R41DN/AzScope.git
+cd AzScope
+chmod +x AzScopee.py
+```
+
+---
+
+## 📌 Uso
+
+Ejecución básica:
+
+```bash
+./AzScope.py <dominio> <wordlist> [output.tsv]
+```
+
+- `<dominio>` → Dominio objetivo (ej: `example.com`)
+- `<wordlist>` → Lista de subdominios (ej: `/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt`)
+- `[output.tsv]` → (Opcional) Archivo donde se guardarán los resultados filtrados.
+
+Ejemplo:
+
+```bash
+./AzScope.py microsoft.com /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt resultados.tsv
+```
+
+---
 
