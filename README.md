@@ -62,4 +62,3 @@ Ejemplo:
 
 ---
 
-![Ejemplo de ejecución](Ejemplo.png)
