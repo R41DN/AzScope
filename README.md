@@ -32,7 +32,7 @@ sudo apt install golang -y
 
 1. Clonar este repositorio:
 ```bash
-git clone https://github.com/<TU_USUARIO>/AzScope.git
+git clone https://github.com/R41DN/AzScope.git
 cd AzScope
 ```
 
