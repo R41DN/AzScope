@@ -11,7 +11,6 @@ Su interfaz en terminal es **colorida, moderna y fácil de leer**, pensada para 
 
 - Enumeración de subdominios usando listas personalizadas.
 - Resolución y filtrado de IPs contra prefijos IPv4 oficiales de Azure.
-- Interfaz visual llamativa y organizada con colores brillantes.
 - Exportación opcional de resultados a formato `.tsv` para análisis posterior.
 - Compatible con entornos Linux.
 
